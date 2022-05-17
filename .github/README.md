@@ -18,7 +18,7 @@ vSSH CLI releases are tested using the latest version of [Venafi SSH Protect](ht
 ## Links
 Use these to quickly jump to a relevant section:
 - Installation of vSSH CLI
-    - [Installing or updating to the latest version](../wiki/Installing-or-updating-to-the-latest-version)
+    - [Installing or updating to the latest version](../../../wiki/Installing-or-updating-to-the-latest-version)
     - [Adding vSSH CLI to your OS path](../wiki/Adding-the-vSSH-CLI-to-your-path)
 - Initial configuration
     - [Prerequisites to use vSSH CLI with Venafi SSH Protect](../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
