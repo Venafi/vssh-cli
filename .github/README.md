@@ -29,7 +29,7 @@ Use these to quickly jump to a relevant section:
     - [Command reference](../../../wiki/Command-reference)
  - Tutorials of using vSSH CLI with Venafi SSH Protect
     - [Interactive logins to remote hosts using the `login` command](../../../wiki/Enrolling-SSH-certificates-for-interactive-logins-to-remote-hosts)
-    - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/nrolling-an-SSH-certificate-for-an-application-or-host)
+    - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/Enrolling-an-SSH-certificate-for-an-application-or-host)
     - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
 
 ## Short usage examples
