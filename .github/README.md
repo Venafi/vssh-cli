@@ -33,7 +33,7 @@ Use these to quickly jump to a relevant section:
     - [Renewing SSH certificates using the `certificate renew` command](../wiki/Renewing-an-SSH-certificate)
 
 ## Short usage examples
-This examples apply to the latest version of vSSH CLI, which you can [download here](../releases/latest).
+The examples bellow apply to the latest version of vSSH CLI, which you can [download here](../releases/latest).
 
 ## License
 
