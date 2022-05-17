@@ -19,21 +19,21 @@ vSSH CLI releases are tested using the latest version of [Venafi SSH Protect](ht
 Use these to quickly jump to a relevant section:
 - Installation of vSSH CLI
     - [Installing or updating to the latest version](../../../wiki/Installing-or-updating-to-the-latest-version)
-    - [Adding vSSH CLI to your OS path](../wiki/Adding-the-vSSH-CLI-to-your-path)
+    - [Adding vSSH CLI to your OS path](../../../wiki/Adding-the-vSSH-CLI-to-your-path)
 - Initial configuration
-    - [Prerequisites to use vSSH CLI with Venafi SSH Protect](../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
-    - [Working with configuration profiles](../wiki/Working-with-configuration-profiles)
+    - [Prerequisites to use vSSH CLI with Venafi SSH Protect](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
+    - [Working with configuration profiles](../../../wiki/Working-with-configuration-profiles)
 - Using the vSSH CLI
-    - [Command line options](../wiki/Command-line-options)
-    - [Understanding the return codes from the vSSH CLI](../wiki/Understanding-return-codes-from-the-vSSH-CLI)
-    - [Command reference](../wiki/Command-reference)
+    - [Command line options](../../../wiki/Command-line-options)
+    - [Understanding the return codes from the vSSH CLI](../../../wiki/Understanding-return-codes-from-the-vSSH-CLI)
+    - [Command reference](../../../wiki/Command-reference)
  - Tutorials of using vSSH CLI with Venafi SSH Protect
-    - [Interactive logins to remote hosts using the `login` command](../wiki/Enrolling-SSH-certificates-for-interactive-logins-to-remote-hosts)
-    - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](E../wiki/nrolling-an-SSH-certificate-for-an-application-or-host)
-    - [Renewing SSH certificates using the `certificate renew` command](../wiki/Renewing-an-SSH-certificate)
+    - [Interactive logins to remote hosts using the `login` command](../../../wiki/Enrolling-SSH-certificates-for-interactive-logins-to-remote-hosts)
+    - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/nrolling-an-SSH-certificate-for-an-application-or-host)
+    - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
 
 ## Short usage examples
-The examples bellow apply to the latest version of vSSH CLI, which you can [download here](../releases/latest).
+The examples bellow apply to the latest version of vSSH CLI, which you can [download here](../../../releases/latest).
 
 ## License
 
