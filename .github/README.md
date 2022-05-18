@@ -36,6 +36,45 @@ Use these to quickly jump to a relevant section:
 ## Short usage examples
 The examples bellow apply to the latest version of vSSH CLI, which you can [download here](../../../releases/latest).
 
+### Example 1: Enrolling an SSH certificate for interactive logins to remote hosts
+1. Create a configuration profile in vSSH CLI, so that you can use vSSH CLI without passing any parameters to the `vssh` command.
+```bash
+user@workstation:~$ vssh profile configure --url tpp.example.com --user alice --template-login "Users - Web Admins"
+? Profile name: default
+? Service URL: tpp.example.com
+? Username for authentication: alice
+? [Login Operation] Template name: Users - ENG Admins
+? [Enroll Operation] Template name: 
+? Do you want to configure more settings? No
+? Do you want to save the configuration (as 'default')? Yes
+  Configuration profile 'default' was successfully saved.
+```
+
+2. Enroll an SSH certificate for interactive logins. Before you perform the step below you need to complete the [prerequisites to use vSSH CLI with Venafi SSH Protect](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
+```bash
+user@workstation:~$ vssh login
+  Logging in as alice...              
+? Enter password for user alice: [? for help] ************
+  Authenticating...
+  Logged in as alice                            
+  One template (Users - Web Admins) found. Using it.    
+  Your identity is alice            
+  Your role is Users - Web Admins (expires in 12 hours) 
+  Credentials have been added to your OpenSSH agent. 
+  Now you can perform SSH logins to remote servers.
+```
+
+3. Open an interactive SSH session to a remote host.
+```bash
+user@workstation:~$ ssh alice@web.example.com
+Linux web.example.com 5.10.0-10-amd64
+
+You have new mail.
+Last login: Tue May 17 13:20:12 2022 from 172.17.254.151
+
+alice@web:~$ 
+```
+
 ## License
 
 Copyright &copy; Venafi, Inc. All rights reserved.
