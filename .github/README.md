@@ -24,10 +24,12 @@ Use these to quickly jump to a relevant section:
 - Initial configuration
     - [Prerequisites to use vSSH CLI with Venafi SSH Protect](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
     - [Working with configuration profiles](../../../wiki/Working-with-configuration-profiles)
+    - [Start OpenSSH authentication agent](../../../wiki/OpenSSH-authentication-agent)
+    - [Configure OpenSSH server on your hosts to allow client authentication](../../../wiki/Configure-OpenSSH-server-for-client-authentication)
 - Using the vSSH CLI
     - [Command line options](../../../wiki/Command-line-options)
-    - [Understanding the return codes from the vSSH CLI](../../../wiki/Understanding-return-codes-from-the-vSSH-CLI)
     - [Command reference](../../../wiki/Command-reference)
+    - [Understanding the return codes from the vSSH CLI](../../../wiki/Understanding-return-codes-from-the-vSSH-CLI)
  - Tutorials of using vSSH CLI with Venafi SSH Protect
     - [Interactive logins to remote hosts using the `login` command](../../../wiki/Enrolling-SSH-certificates-for-interactive-logins-to-remote-hosts)
     - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/Enrolling-an-SSH-certificate-for-an-application-or-host)
