@@ -36,7 +36,7 @@ Use these to quickly jump to a relevant section:
     - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
 
 ## Short usage examples
-The examples bellow apply to the latest version of vSSH CLI, which you can [download here](../../../releases/latest).
+The examples bellow applies to the latest version of vSSH CLI, which you can [download here](../../../releases/latest).
 
 ### Example 1: Enrolling an SSH certificate for interactive logins to remote hosts
 1. Create a configuration profile in vSSH CLI, so that you can use vSSH CLI without passing any parameters to the `vssh` command.
