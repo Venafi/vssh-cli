@@ -5,7 +5,7 @@
 [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Community Supported](https://img.shields.io/badge/Support%20Level-Community-brightgreen)
 ![Compatible with TPP 21.4+](https://img.shields.io/badge/Compatibility-TPP%2021.4+-f9a90c)  
-_To report a problem or share an idea, use **[Issues](../../issues)**; and if you have a suggestion for fixing the issue, please include those details, too.
+_To report a problem or share an idea, use **[Issues](../../../issues)**; and if you have a suggestion for fixing the issue, please include those details, too.
 Got questions or want to discuss something with our team? **[Join us on Slack](https://join.slack.com/t/venafi-integrations/shared_invite/zt-i8fwc379-kDJlmzU8OiIQOJFSwiA~dg)**!_
 <!-- HEADER END-->
 
