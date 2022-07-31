@@ -35,8 +35,20 @@ Use these to quickly jump to a relevant section:
     - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/Enrolling-an-SSH-certificate-for-an-application-or-host)
     - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
 
+## Quick installation of vSSH CLI
+To quickly install vSSH CLI on Linux or macOS, run the following script. The script requires sudo and it will install vSSH CLI to `/usr/local/bin/` directory. 
+
+Linux and macOS
+```bash
+curl -s https://raw.githubusercontent.com/Venafi/vssh-cli/main/.github/install.sh | sh
+```
+
+For Windows, you have to download one of the following archives and extract it yourself.
+- [Windows x64 (zip)](../../../releases/latest/download/vssh_windows_amd64.zip)
+- [Windows x86 (zip)](../../../releases/latest/download/vssh_windows_386.zip)
+
 ## Short usage examples
-The examples bellow applies to the latest version of vSSH CLI, which you can [download here](../../../releases/latest).
+The examples bellow applies to the latest version of vSSH CLI.
 
 ### Example 1: Enrolling an SSH certificate for interactive logins to remote hosts
 1. Create a configuration profile in vSSH CLI, so that you can use vSSH CLI without passing any parameters to the `vssh` command.
