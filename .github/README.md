@@ -1,6 +1,6 @@
 <!-- HEADER BEGIN-->
-<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/Venafi_LOGO_OrangeWhite_rgb_f.svg#gh-dark-mode-only" width="200px">
-<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/Venafi_LOGO_OrangeIndigo_rgb_f.svg#gh-light-mode-only" width="200px">
+<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-dark-bg.png#gh-dark-mode-only" width="200px">
+<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-light-bg.svg#gh-light-mode-only" width="200px">
 
 [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Community Supported](https://img.shields.io/badge/Support%20Level-Community-brightgreen)
@@ -10,11 +10,11 @@ Got questions or want to discuss something with our team? **[Join us on Slack](h
 <!-- HEADER END-->
 
 # vSSH CLI
-vSSH CLI is a command line utility designed to simplify generation and enrollment of machine identities for SSH access. System administrators can enroll SSH certificates from Venafi SSH Protect and use them to connect to their infrastructure. vSSH CLI can be used to enroll SSH certificates for applications and hosts.
+vSSH CLI is a command line utility designed to simplify generation and enrollment of machine identities for SSH access. System administrators can enroll SSH certificates from [CyberArk SSH Manager for Machines](https://www.cyberark.com/products/ssh-manager-for-machines/) and use them to connect to their infrastructure. vSSH CLI can be used to enroll SSH certificates for applications and hosts.
 
 ## Compatibility
-vSSH CLI releases are tested using the latest version of [Venafi SSH Protect](https://www.venafi.com/platform/ssh-protect).  General functionality of the
-[latest vSSH CLI release](../releases/latest) should be compatible with Venafi SSH Protect 21.4 or higher.
+vSSH CLI releases are tested using the latest version of [CyberArk SSH Manager for Machines](https://www.cyberark.com/products/ssh-manager-for-machines/).  General functionality of the
+[latest vSSH CLI release](../releases/latest) should be compatible with SSH Manager for Machines 21.4 or higher.
 
 ## Links
 Use these to quickly jump to a relevant section:
@@ -22,7 +22,7 @@ Use these to quickly jump to a relevant section:
     - [Installing or updating to the latest version](../../../wiki/Installing-or-updating-to-the-latest-version)
     - [Adding vSSH CLI to your OS path](../../../wiki/Adding-the-vSSH-CLI-to-your-path)
 - Initial configuration
-    - [Prerequisites to use vSSH CLI with Venafi SSH Protect](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
+    - [Prerequisites to use vSSH CLI with SSH Manager for Machines](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
     - [Working with configuration profiles](../../../wiki/Working-with-configuration-profiles)
     - [Start OpenSSH authentication agent](../../../wiki/OpenSSH-authentication-agent)
     - [Configure OpenSSH server on your hosts to allow client authentication](../../../wiki/Configure-OpenSSH-server-for-client-authentication)
@@ -30,7 +30,7 @@ Use these to quickly jump to a relevant section:
     - [Command line options](../../../wiki/Command-line-options)
     - [Command reference](../../../wiki/Command-reference)
     - [Understanding the return codes from the vSSH CLI](../../../wiki/Understanding-return-codes-from-the-vSSH-CLI)
- - Tutorials of using vSSH CLI with Venafi SSH Protect
+ - Tutorials of using vSSH CLI with SSH Manager for Machines
     - [Interactive logins to remote hosts using the `login` command](../../../wiki/Enrolling-SSH-certificates-for-interactive-logins-to-remote-hosts)
     - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/Enrolling-an-SSH-certificate-for-an-application-or-host)
     - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
@@ -64,7 +64,7 @@ user@workstation:~$ vssh profile configure --url tpp.example.com --user alice --
   Configuration profile 'default' was successfully saved.
 ```
 
-2. Enroll an SSH certificate for interactive logins. Before you perform the step below you need to complete the [prerequisites to use vSSH CLI with Venafi SSH Protect](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
+2. Enroll an SSH certificate for interactive logins. Before you perform the step below you need to complete the [prerequisites to use vSSH CLI with SSH Manager for Machines](../../../wiki/Prerequisites-to-use-vSSH-CLI-with-Venafi-SSH-Protect)
 ```bash
 user@workstation:~$ vssh login
   Logging in as alice...              
@@ -91,8 +91,8 @@ alice@web:~$
 
 ## License
 
-Copyright &copy; Venafi, Inc. All rights reserved.
+Copyright &copy; CyberArk, Inc. All rights reserved.
 
 vSSH CLI is licensed under the Apache License, Version 2.0. See `LICENSE` for the full license text.
 
-Please direct questions/comments to opensource@venafi.com.
+Please direct questions/comments to mis.support@cyberark.com.
