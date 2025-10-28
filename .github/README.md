@@ -1,7 +1,12 @@
 <!-- HEADER BEGIN-->
-<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-dark-bg.png#gh-dark-mode-only" width="200px">
-<img src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-light-bg.svg#gh-light-mode-only" width="200px">
-
+<picture>
+  <!-- Dark-mode logo -->
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-dark-bg.png">
+  <!-- Light-mode fallback -->
+  <img alt="CyberArk" src="https://raw.githubusercontent.com/Venafi/vssh-cli/master/.github/images/cyberark-logo-light-bg.svg" width="200" height="auto">
+</picture>
+<br />
+<br />
 [![Apache 2.0 License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![Community Supported](https://img.shields.io/badge/Support%20Level-Community-brightgreen)
 ![Compatible with TPP 21.4+](https://img.shields.io/badge/Compatibility-TPP%2021.4+-f9a90c)  
