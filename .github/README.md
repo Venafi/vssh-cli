@@ -41,15 +41,13 @@ Use these to quickly jump to a relevant section:
     - [Enrolling SSH certificates for applications or hosts using the `certificate enroll` command](../../../wiki/Enrolling-an-SSH-certificate-for-an-application-or-host)
     - [Renewing SSH certificates using the `certificate renew` command](../../../wiki/Renewing-an-SSH-certificate)
 
-## Quick installation of vSSH CLI
-To quickly install vSSH CLI on Linux or macOS, run the following script. The script requires sudo and it will install vSSH CLI to `/usr/local/bin/` directory. 
+## Installation
+Download the appropriate archive from the latest release and extract it manually.
 
-Linux and macOS
-```bash
-curl -s https://raw.githubusercontent.com/Venafi/vssh-cli/main/.github/install.sh | sh
-```
-
-For Windows, you have to download one of the following archives and extract it yourself.
+- [Linux x64 (zip)](../../../releases/latest/download/vssh_linux_amd64.zip)
+- [Linux ARM64 (zip)](../../../releases/latest/download/vssh_linux_arm64.zip)
+- [macOS x64 (zip)](../../../releases/latest/download/vssh_darwin_amd64.zip)
+- [macOS ARM64 (zip)](../../../releases/latest/download/vssh_darwin_arm64.zip)
 - [Windows x64 (zip)](../../../releases/latest/download/vssh_windows_amd64.zip)
 - [Windows x86 (zip)](../../../releases/latest/download/vssh_windows_386.zip)
 
