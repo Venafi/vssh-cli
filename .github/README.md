@@ -51,6 +51,40 @@ Download the appropriate archive from the latest release and extract it manually
 - [Windows x64 (zip)](../../../releases/latest/download/vssh_windows_amd64.zip)
 - [Windows x86 (zip)](../../../releases/latest/download/vssh_windows_386.zip)
 
+### Verifying Downloads
+
+For security, all releases include SHA-256 checksums and cryptographic signatures. We recommend verifying your download before use.
+
+#### Verify Checksum
+Download the [checksums.txt](../../../releases/latest/download/checksums.txt) file and verify your download:
+
+```bash
+sha256sum -c checksums.txt --ignore-missing
+```
+
+On macOS:
+```bash
+shasum -a 256 -c checksums.txt --ignore-missing
+```
+
+#### Verify Signature (Advanced)
+Each release's checksums file is cryptographically signed using [Sigstore](https://www.sigstore.dev/). To verify the signature:
+
+1. Install [cosign](https://docs.sigstore.dev/cosign/installation/)
+2. Download [checksums.txt.bundle](../../../releases/latest/download/checksums.txt.bundle)
+3. Verify the signature:
+
+```bash
+cosign verify-blob \
+  --bundle checksums.txt.bundle \
+  --certificate-identity-regexp "^https://github.com/venafi/vssh-cli" \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  checksums.txt
+```
+
+#### Software Bill of Materials (SBOM)
+Each release includes a Software Bill of Materials in CycloneDX format: [sbom.json](../../../releases/latest/download/sbom.json)
+
 ## Short usage examples
 The examples bellow applies to the latest version of vSSH CLI.
 

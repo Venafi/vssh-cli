@@ -1,0 +1,129 @@
+name: Release Security Artifacts
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  generate-security-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871  # v4.2.1
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da  # v3.7.0
+
+      - name: Download release artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p release-artifacts
+          cd release-artifacts
+
+          # Download all release assets
+          gh release download ${{ github.event.release.tag_name }} \
+            --repo ${{ github.repository }} \
+            --pattern "*.zip"
+
+      - name: Generate SHA-256 checksums
+        run: |
+          cd release-artifacts
+          sha256sum *.zip > checksums.txt
+          cat checksums.txt
+
+      - name: Sign checksums with cosign (keyless)
+        run: |
+          cd release-artifacts
+          cosign sign-blob \
+            --yes \
+            --bundle checksums.txt.bundle \
+            checksums.txt
+
+      - name: Generate SBOM
+        run: |
+          cat > release-artifacts/sbom.json <<'EOF'
+          {
+            "bomFormat": "CycloneDX",
+            "specVersion": "1.4",
+            "version": 1,
+            "metadata": {
+              "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+              "component": {
+                "type": "application",
+                "name": "vssh-cli",
+                "version": "${{ github.event.release.tag_name }}",
+                "purl": "pkg:github/venafi/vssh-cli@${{ github.event.release.tag_name }}",
+                "externalReferences": [
+                  {
+                    "type": "vcs",
+                    "url": "https://github.com/venafi/vssh-cli"
+                  },
+                  {
+                    "type": "website",
+                    "url": "https://www.cyberark.com/products/ssh-manager-for-machines/"
+                  }
+                ]
+              },
+              "licenses": [
+                {
+                  "license": {
+                    "id": "Apache-2.0"
+                  }
+                }
+              ]
+            },
+            "components": []
+          }
+          EOF
+
+      - name: Upload security artifacts to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd release-artifacts
+          gh release upload ${{ github.event.release.tag_name }} \
+            checksums.txt \
+            checksums.txt.bundle \
+            sbom.json \
+            --repo ${{ github.repository }} \
+            --clobber
+
+      - name: Update release notes with verification instructions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > verification-instructions.md <<'EOF'
+          ## Verification
+
+          ### Verify checksums
+          Download `checksums.txt` and verify your download:
+          ```bash
+          sha256sum -c checksums.txt --ignore-missing
+          ```
+
+          ### Verify signature
+          Install [cosign](https://github.com/sigstore/cosign) and verify the checksums file signature:
+          ```bash
+          cosign verify-blob \
+            --bundle checksums.txt.bundle \
+            --certificate-identity-regexp "^https://github.com/venafi/vssh-cli" \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+            checksums.txt
+          ```
+
+          ### SBOM
+          A Software Bill of Materials (SBOM) in CycloneDX format is available as `sbom.json`.
+          EOF
+
+          # Append to existing release notes
+          CURRENT_BODY=$(gh release view ${{ github.event.release.tag_name }} --json body -q .body)
+          NEW_BODY="${CURRENT_BODY}\n\n$(cat verification-instructions.md)"
+
+          gh release edit ${{ github.event.release.tag_name }} \
+            --notes "${NEW_BODY}" \
+            --repo ${{ github.repository }}
