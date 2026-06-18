@@ -1,0 +1,96 @@
+# Generates SHA-256 checksums, cosign signature, and SBOM for every release.
+# Addresses CWE-494 (missing integrity verification) and CWE-1059 (missing SBOM).
+name: Release Verification
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write          # attach assets to the release
+  id-token: write          # cosign keyless signing via GitHub OIDC
+
+jobs:
+  checksums-and-sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Download all release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p release-assets
+          gh release download "${{ github.event.release.tag_name }}" \
+            --dir release-assets \
+            --skip-existing
+
+      - name: Generate SHA-256 checksums
+        run: |
+          cd release-assets
+          sha256sum -- * > ../checksums.txt
+          cd ..
+          echo "--- checksums.txt ---"
+          cat checksums.txt
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@dc72c7d5c4d10cd6bcb8cf6e3fd625a9e5e537da # v3.7.0
+
+      - name: Sign checksums with cosign (keyless / GitHub OIDC)
+        run: |
+          cosign sign-blob \
+            --yes \
+            --bundle checksums.txt.bundle \
+            checksums.txt
+
+      - name: Install CycloneDX CLI
+        run: |
+          curl -sSfL https://github.com/CycloneDX/cyclonedx-cli/releases/download/v0.27.1/cyclonedx-linux-x64 \
+            -o /usr/local/bin/cyclonedx
+          chmod +x /usr/local/bin/cyclonedx
+
+      - name: Generate CycloneDX SBOM
+        run: |
+          # Produce a minimal CycloneDX SBOM listing all release artifacts.
+          # If the repo gains a Go module or other manifest in the future,
+          # replace this step with a proper language-aware SBOM generator
+          # (e.g., cyclonedx-gomod, syft).
+          cat > sbom.cdx.json <<SBOM_EOF
+          {
+            "bomFormat": "CycloneDX",
+            "specVersion": "1.5",
+            "version": 1,
+            "metadata": {
+              "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+              "component": {
+                "type": "application",
+                "name": "vssh-cli",
+                "version": "${{ github.event.release.tag_name }}",
+                "purl": "pkg:github/venafi/vssh-cli@${{ github.event.release.tag_name }}"
+              }
+            },
+            "components": [
+          $(cd release-assets && ls -1 | awk '
+            BEGIN { first=1 }
+            {
+              if (!first) printf ",\n"
+              first=0
+              printf "      {\"type\":\"file\",\"name\":\"%s\"}", $0
+            }
+          ')
+            ]
+          }
+          SBOM_EOF
+          echo "--- sbom.cdx.json ---"
+          cat sbom.cdx.json
+
+      - name: Upload verification artifacts to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            checksums.txt \
+            checksums.txt.bundle \
+            sbom.cdx.json \
+            --clobber

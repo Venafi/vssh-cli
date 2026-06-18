@@ -51,6 +51,29 @@ Download the appropriate archive from the latest release and extract it manually
 - [Windows x64 (zip)](../../../releases/latest/download/vssh_windows_amd64.zip)
 - [Windows x86 (zip)](../../../releases/latest/download/vssh_windows_386.zip)
 
+### Verifying release integrity
+
+Every release includes a `checksums.txt` file containing SHA-256 hashes for all
+release artifacts, a `checksums.txt.bundle` cosign signature bundle, and a
+CycloneDX SBOM (`sbom.cdx.json`).
+
+**1. Verify the checksum of a downloaded archive:**
+
+```bash
+# Download checksums.txt from the same release
+sha256sum --check --ignore-missing checksums.txt
+```
+
+**2. Verify the cosign signature on the checksums file:**
+
+```bash
+cosign verify-blob \
+  --bundle checksums.txt.bundle \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  --certificate-identity-regexp '^https://github\.com/[Vv]enafi/vssh-cli/' \
+  checksums.txt
+```
+
 ## Short usage examples
 The examples bellow applies to the latest version of vSSH CLI.
 
